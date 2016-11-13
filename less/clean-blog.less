@@ -62,7 +62,7 @@ hr.small {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: inherit;
 	z-index: 3;
 	.sans-serif-font;
 	.navbar-brand {
@@ -87,76 +87,240 @@ hr.small {
 		}
 	}
 	@media only screen and (min-width: 768px) {
-		background: transparent;
-		border-bottom: 1px solid transparent;
-		.navbar-brand {
-			color: white;
-			padding: 20px;
-			&:hover,
-			&:focus {
-				color: fade(white, 80%);
+		body:not(.neos-backend) &,
+		body.neos-full-screen &,
+		body.neos-backend:not(.neos-navigate-panel-open):not(.neos-inspector-panel-open) & {
+			background: transparent;
+			border-bottom: 1px solid transparent;
+			.navbar-brand {
+				color: white;
+				padding: 20px;
+				&:hover,
+				&:focus {
+					color: fade(white, 80%);
+				}
+			}
+			.nav {
+				li {
+					a {
+						color: white;
+						padding: 20px;
+						&:hover,
+						&:focus {
+							color: fade(white, 80%);
+						}
+					}
+				}
 			}
 		}
-		.nav {
-			li {
-				a {
-					color: white;
-					padding: 20px;
-					&:hover,
-					&:focus {
-						color: fade(white, 80%);
+	}
+	@media only screen and (min-width: 1088px) {
+		body.neos-navigate-panel-open:not(.neos-inspector-panel-open) &,
+		body.neos-inspector-panel-open:not(.neos-navigate-panel-open) & {
+			background: transparent;
+			border-bottom: 1px solid transparent;
+			.navbar-brand {
+				color: white;
+				padding: 20px;
+				&:hover,
+				&:focus {
+					color: fade(white, 80%);
+				}
+			}
+			.nav {
+				li {
+					a {
+						color: white;
+						padding: 20px;
+						&:hover,
+						&:focus {
+							color: fade(white, 80%);
+						}
+					}
+				}
+			}
+		}
+	}
+	@media only screen and (min-width: 1408px) {
+		body.neos-navigate-panel-open.neos-inspector-panel-open:not(.neos-full-screen) & {
+			background: transparent;
+			border-bottom: 1px solid transparent;
+			.navbar-brand {
+				color: white;
+				padding: 20px;
+				&:hover,
+				&:focus {
+					color: fade(white, 80%);
+				}
+			}
+			.nav {
+				li {
+					a {
+						color: white;
+						padding: 20px;
+						&:hover,
+						&:focus {
+							color: fade(white, 80%);
+						}
 					}
 				}
 			}
 		}
 	}
 	@media only screen and (min-width: 1170px) {
-		-webkit-transition: background-color 0.3s;
-		-moz-transition: background-color 0.3s;
-		transition: background-color 0.3s;
-		/* Force Hardware Acceleration in WebKit */
-		-webkit-transform: translate3d(0, 0, 0);
-		-moz-transform: translate3d(0, 0, 0);
-		-ms-transform: translate3d(0, 0, 0);
-		-o-transform: translate3d(0, 0, 0);
-		transform: translate3d(0, 0, 0);
-		-webkit-backface-visibility: hidden;
-		backface-visibility: hidden;
-		&.is-fixed {
-			/* when the user scrolls down, we hide the header right above the viewport */
-			position: fixed;
-			top: -61px;
-			background-color: fade(white, 90%);
-			border-bottom: 1px solid darken(white, 5%);
-			-webkit-transition: -webkit-transform 0.3s;
-			-moz-transition: -moz-transform 0.3s;
-			transition: transform 0.3s;
-			.navbar-brand {
-				color: @gray-dark;
-				&:hover,
-				&:focus {
-					color: @theme-primary;
+		body:not(.neos-backend) &,
+		body.neos-full-screen &,
+		body.neos-backend:not(.neos-navigate-panel-open):not(.neos-inspector-panel-open) & {
+			-webkit-transition: background-color 0.3s;
+			-moz-transition: background-color 0.3s;
+			transition: background-color 0.3s;
+			/* Force Hardware Acceleration in WebKit */
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			-ms-transform: translate3d(0, 0, 0);
+			-o-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+			&.is-fixed {
+				/* when the user scrolls down, we hide the header right above the viewport */
+				position: fixed;
+				top: -61px;
+				background-color: fade(white, 90%);
+				border-bottom: 1px solid darken(white, 5%);
+				-webkit-transition: -webkit-transform 0.3s;
+				-moz-transition: -moz-transform 0.3s;
+				transition: transform 0.3s;
+				.navbar-brand {
+					color: @gray-dark;
+					&:hover,
+					&:focus {
+						color: @theme-primary;
+					}
 				}
-			}
-			.nav {
-				li {
-					a {
-						color: @gray-dark;
-						&:hover,
-						&:focus {
-							color: @theme-primary;
+				.nav {
+					li {
+						a {
+							color: @gray-dark;
+							&:hover,
+							&:focus {
+								color: @theme-primary;
+							}
 						}
 					}
 				}
 			}
+			&.is-visible {
+				/* if the user changes the scrolling direction, we show the header */
+				-webkit-transform: translate3d(0, 100%, 0);
+				-moz-transform: translate3d(0, 100%, 0);
+				-ms-transform: translate3d(0, 100%, 0);
+				-o-transform: translate3d(0, 100%, 0);
+				transform: translate3d(0, 100%, 0);
+			}
 		}
-		&.is-visible {
-			/* if the user changes the scrolling direction, we show the header */
-			-webkit-transform: translate3d(0, 100%, 0);
-			-moz-transform: translate3d(0, 100%, 0);
-			-ms-transform: translate3d(0, 100%, 0);
-			-o-transform: translate3d(0, 100%, 0);
-			transform: translate3d(0, 100%, 0);
+	}
+	@media only screen and (min-width: 1490px) {
+		body.neos-navigate-panel-open:not(.neos-inspector-panel-open) &,
+		body.neos-inspector-panel-open:not(.neos-navigate-panel-open) & {
+			-webkit-transition: background-color 0.3s;
+			-moz-transition: background-color 0.3s;
+			transition: background-color 0.3s;
+			/* Force Hardware Acceleration in WebKit */
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			-ms-transform: translate3d(0, 0, 0);
+			-o-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+			&.is-fixed {
+				/* when the user scrolls down, we hide the header right above the viewport */
+				position: fixed;
+				top: -61px;
+				background-color: fade(white, 90%);
+				border-bottom: 1px solid darken(white, 5%);
+				-webkit-transition: -webkit-transform 0.3s;
+				-moz-transition: -moz-transform 0.3s;
+				transition: transform 0.3s;
+				.navbar-brand {
+					color: @gray-dark;
+					&:hover,
+					&:focus {
+						color: @theme-primary;
+					}
+				}
+				.nav {
+					li {
+						a {
+							color: @gray-dark;
+							&:hover,
+							&:focus {
+								color: @theme-primary;
+							}
+						}
+					}
+				}
+			}
+			&.is-visible {
+				/* if the user changes the scrolling direction, we show the header */
+				-webkit-transform: translate3d(0, 100%, 0);
+				-moz-transform: translate3d(0, 100%, 0);
+				-ms-transform: translate3d(0, 100%, 0);
+				-o-transform: translate3d(0, 100%, 0);
+				transform: translate3d(0, 100%, 0);
+			}
+		}
+	}
+	@media only screen and (min-width: 1811px) {
+		body.neos-navigate-panel-open.neos-inspector-panel-open:not(.neos-full-screen) & {
+			-webkit-transition: background-color 0.3s;
+			-moz-transition: background-color 0.3s;
+			transition: background-color 0.3s;
+			/* Force Hardware Acceleration in WebKit */
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			-ms-transform: translate3d(0, 0, 0);
+			-o-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+			&.is-fixed {
+				/* when the user scrolls down, we hide the header right above the viewport */
+				position: fixed;
+				top: -61px;
+				background-color: fade(white, 90%);
+				border-bottom: 1px solid darken(white, 5%);
+				-webkit-transition: -webkit-transform 0.3s;
+				-moz-transition: -moz-transform 0.3s;
+				transition: transform 0.3s;
+				.navbar-brand {
+					color: @gray-dark;
+					&:hover,
+					&:focus {
+						color: @theme-primary;
+					}
+				}
+				.nav {
+					li {
+						a {
+							color: @gray-dark;
+							&:hover,
+							&:focus {
+								color: @theme-primary;
+							}
+						}
+					}
+				}
+			}
+			&.is-visible {
+				/* if the user changes the scrolling direction, we show the header */
+				-webkit-transform: translate3d(0, 100%, 0);
+				-moz-transform: translate3d(0, 100%, 0);
+				-ms-transform: translate3d(0, 100%, 0);
+				-o-transform: translate3d(0, 100%, 0);
+				transform: translate3d(0, 100%, 0);
+			}
 		}
 	}
 }
@@ -176,7 +340,17 @@ hr.small {
 		padding: 100px 0 50px;
 		color: white;
 		@media only screen and (min-width: 768px) {
-			padding: 150px 0;
+			body:not(.neos-backend) &,
+			body.neos-full-screen &,
+			body.neos-backend:not(.neos-navigate-panel-open):not(.neos-inspector-panel-open) & {
+				padding: 150px 0;
+			}
+		}
+		@media only screen and (min-width: 1088px) {
+			body.neos-navigate-panel-open:not(.neos-inspector-panel-open) &,
+			body.neos-inspector-panel-open:not(.neos-navigate-panel-open) & {
+				padding: 150px 0;
+			}
 		}
 	}
 	.site-heading,
@@ -195,8 +369,27 @@ hr.small {
 			margin: 10px 0 0;
 		}
 		@media only screen and (min-width: 768px) {
-			h1 {
-				font-size: 80px;
+			body:not(.neos-backend) &,
+			body.neos-full-screen &,
+			body.neos-backend:not(.neos-navigate-panel-open):not(.neos-inspector-panel-open) & {
+				h1 {
+					font-size: 80px;
+				}
+			}
+		}
+		@media only screen and (min-width: 1088px) {
+			body.neos-navigate-panel-open:not(.neos-inspector-panel-open) &,
+			body.neos-inspector-panel-open:not(.neos-navigate-panel-open) & {
+				h1 {
+					font-size: 80px;
+				}
+			}
+		}
+		@media only screen and (min-width: 1408px) {
+			body.neos-navigate-panel-open.neos-inspector-panel-open:not(.neos-full-screen) & {
+				h1 {
+					font-size: 80px;
+				}
 			}
 		}
 	}
@@ -225,11 +418,36 @@ hr.small {
 			}
 		}
 		@media only screen and (min-width: 768px) {
-			h1 {
-				font-size: 55px;
+			body:not(.neos-backend) &,
+			body.neos-full-screen &,
+			body.neos-backend:not(.neos-navigate-panel-open):not(.neos-inspector-panel-open) & {
+				h1 {
+					font-size: 55px;
+				}
+				.subheading {
+					font-size: 30px;
+				}
 			}
-			.subheading {
-				font-size: 30px;
+		}
+		@media only screen and (min-width: 1088px) {
+			body.neos-navigate-panel-open:not(.neos-inspector-panel-open) &,
+			body.neos-inspector-panel-open:not(.neos-navigate-panel-open) & {
+				h1 {
+					font-size: 55px;
+				}
+				.subheading {
+					font-size: 30px;
+				}
+			}
+		}
+		@media only screen and (min-width: 1408px) {
+			body.neos-navigate-panel-open.neos-inspector-panel-open:not(.neos-full-screen) & {
+				h1 {
+					font-size: 55px;
+				}
+				.subheading {
+					font-size: 30px;
+				}
 			}
 		}
 	}
@@ -272,9 +490,32 @@ hr.small {
 		}
 	}
 	@media only screen and (min-width: 768px) {
-		> a {
-			> .post-title {
-				font-size: 36px;
+		body:not(.neos-backend) &,
+		body.neos-full-screen &,
+		body.neos-backend:not(.neos-navigate-panel-open):not(.neos-inspector-panel-open) & {
+			> a {
+				> .post-title {
+					font-size: 36px;
+				}
+			}
+		}
+	}
+	@media only screen and (min-width: 1088px) {
+		body.neos-navigate-panel-open:not(.neos-inspector-panel-open) &,
+		body.neos-inspector-panel-open:not(.neos-navigate-panel-open) & {
+			> a {
+				> .post-title {
+					font-size: 36px;
+				}
+			}
+		}
+	}
+	@media only screen and (min-width: 1408px) {
+		body.neos-navigate-panel-open.neos-inspector-panel-open:not(.neos-full-screen) & {
+			> a {
+				> .post-title {
+					font-size: 36px;
+				}
 			}
 		}
 	}
